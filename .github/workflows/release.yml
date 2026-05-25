@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: 'xbufu.cloud_init'
 
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: 'xbufu.cloud_init'
 
@@ -54,7 +54,7 @@ jobs:
           tag: latest
           allowUpdates: true
           makeLatest: true
-          token: ${{ SECRETS.RELEASE_TOKEN }}
+          token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Set up Python 3.
         uses: actions/setup-python@v5
