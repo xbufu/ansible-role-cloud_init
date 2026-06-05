@@ -18,7 +18,7 @@
   ansible.builtin.copy:
     src: debian-cloud.cfg
     dest: /etc/cloud/cloud.cfg
-  when: ansible_distribution == "Debian"
+  when: ansible_facts["distribution"] == "Debian"
 
 - name: Write Proxmox cloud-init datasource config
   ansible.builtin.copy:

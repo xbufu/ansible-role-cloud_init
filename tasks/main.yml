@@ -2,7 +2,7 @@
 - name: Wait for cloud-init
   ansible.builtin.wait_for:
     path: /var/lib/cloud/instance/boot-finished
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_facts["distribution"] == "Ubuntu"
 
 - name: Prepare cloud-init
   ansible.builtin.include_tasks: cloud-init.yml

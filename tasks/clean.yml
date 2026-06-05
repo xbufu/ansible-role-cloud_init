@@ -7,7 +7,7 @@
   ansible.builtin.shell: |
     sed -i -e "s/GRUB_CMDLINE_LINUX_DEFAULT=\"\(.*\)\"/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
     update-grub
-  when: ansible_distribution_version == "20.04" or ansible_distribution_version == "22.04" or ansible_distribution_version == "24.04"
+  when: ansible_facts["distribution_version"] == "20.04" or ansible_facts["distribution_version"] == "22.04" or ansible_facts["distribution_version"] == "24.04"
 
 - name: Get SSH host keys
   ansible.builtin.find:
@@ -30,7 +30,7 @@
     exit 0
     EOF
     sudo chmod +x /etc/rc.local
-  when: not (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "24")
+  when: not (ansible_facts["distribution"] == "Ubuntu" and ansible_facts["distribution_major_version"] == "24")
 
 - name: Clear out machine ID
   ansible.builtin.copy:
